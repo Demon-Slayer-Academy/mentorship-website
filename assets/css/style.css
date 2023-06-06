@@ -549,12 +549,12 @@ h6 {
 #hero p {
   color: #ebebeb;
   /* font-weight: 700; */
-  font-size: 20px;
+  font-size: 18px;
 }
 
 @media (max-width: 991px) {
   #hero p {
-    font-size: 16px;
+    font-size: 12px;
   }
 }
 
