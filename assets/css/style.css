@@ -1702,7 +1702,7 @@ h6 {
   left: 0;
   width: 100%;
   height: 4px;
-  background: linear-gradient(90deg,transparent,#fff);
+  background: linear-gradient(90deg,transparent,#7321f1);
   animation: animate1 1s linear infinite;
 }
 @keyframes animate1{
@@ -1718,7 +1718,7 @@ h6 {
   right: 0;
   width: 4px;
   height: 100%;
-  background: linear-gradient(180deg,transparent,#fff);
+  background: linear-gradient(180deg,transparent,#7321f1);
   animation: animate2 1s linear infinite;
   animation-delay: 0.25s;
 }
@@ -1735,7 +1735,7 @@ h6 {
   right: 0;
   width: 100%;
   height: 4px;
-  background: linear-gradient(270deg,transparent,#fff);
+  background: linear-gradient(270deg,transparent,#7321f1);
   animation: animate3 1s linear infinite;
   animation-delay: 0.50s;
 }
@@ -1754,7 +1754,7 @@ h6 {
   left: 0;
   width: 4px;
   height: 100%;
-  background: linear-gradient(360deg,transparent,#fff);
+  background: linear-gradient(360deg,transparent,#7321f1);
   animation: animate4 1s linear infinite;
   animation-delay: 0.75s;
 }
