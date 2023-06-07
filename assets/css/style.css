@@ -18,14 +18,15 @@
 
 
 body {
-  background: #060c22;
+  background: #060c22 !important;
   color: #fff;
   font-family: "Montserrat", sans-serif;
 }
 
 a {
+  font-family: "Montserrat", sans-serif;
   color: #7321f1;
-  text-decoration: none;
+  text-decoration: none !important;
   transition: 0.5s;
 }
 
@@ -34,7 +35,7 @@ a:active,
 a:focus {
   color: #f8234a;
   outline: none;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 p {
@@ -1197,6 +1198,8 @@ h6 {
 # F.A.Q Section
 --------------------------------------------------------------*/
 #faq {
+  background-color: #060c22;
+  font-family: 'Montserrat',sans-serif;
   padding: 60px 0;
   padding-top: 0;
 }
@@ -1233,6 +1236,8 @@ h6 {
 }
 
 #faq .faq-list p {
+  font-family: 'Montserrat',sans-serif;
+  color: #fff;
   margin-bottom: 0;
   padding: 10px 0 0 25px;
 }
@@ -1242,6 +1247,7 @@ h6 {
 }
 
 #faq .faq-list .collapsed {
+  font-family: 'Montserrat',sans-serif;
   color: #fff;
 }
 
@@ -1311,7 +1317,7 @@ h6 {
 
 #subscribe button {
   border: 0;
-  padding: 9px 25px;
+  padding: 13px 25px;
   cursor: pointer;
   background: #7321f1;
   color: #fff;
@@ -1818,3 +1824,77 @@ h6 {
       bottom: 100%;
   }
 }
+
+
+/* ------------------------ */
+
+#slider{
+  background-color: #060c22;
+  color: #fff;
+  margin-bottom: 60px;
+  width: 75%;
+}
+
+
+@media (max-width: 1024px) {
+  #slider {
+    width: 100%;
+  }
+}
+
+.img-area{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
+  /* margin-bottom: 20px; */
+}
+
+.img-area img{
+  width: 100%;
+}
+
+.content{
+  text-align: center;
+  padding: 40px;
+  color: #fff;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  webkit-backdrop-filter: blur(12px);
+}
+
+.content h2{
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.content p{
+  line-height: 1.9;
+}
+
+.owl-dots{
+  text-align: center;
+  margin-top: 20px;
+}
+
+.owl-dot{
+  display: inline-block;
+  height: 20px !important;
+  width: 20px !important;
+  background-color: #ddd !important;
+  opacity: .8;
+  margin: 0 10px;
+  border-radius: 50%;
+}
+
+.owl-dot.active{
+  background-color: #7321f1 !important;
+}
+
+
+
+/* ------------------------ */
