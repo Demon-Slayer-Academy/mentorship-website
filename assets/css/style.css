@@ -14,10 +14,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 
 body {
-  background: #fff;
-  color: #2f3138;
+  background: #060c22;
+  color: #fff;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -121,7 +123,9 @@ h6 {
   left: calc(50% - 25px);
 }
 
+
 .section-header h2 {
+  color: #fff;
   font-size: 36px;
   text-transform: uppercase;
   text-align: center;
@@ -137,6 +141,45 @@ h6 {
   font-weight: 500;
   color: #9195a2;
 }
+
+
+.section-header2{
+  margin-bottom: 30px;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.section-header2::before {
+  content: "";
+  position: absolute;
+  display: block;
+  /* width: 60px;
+  height: 5px; */
+  /* background: #7321f1; */
+  bottom: 0;
+  left: calc(50% - 25px);
+}
+
+
+.section-header2 h2 {
+  color: #fff;
+  font-size: 36px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.section-header2 p {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #9195a2;
+}
+
+
 
 .section-with-bg {
   background-color: #f6f7fd;
@@ -681,7 +724,7 @@ h6 {
 
 #about:before {
   content: "";
-  /* background: rgba(106, 0, 255, 0.8); */
+  background: #060c22;
   position: absolute;
   bottom: 0;
   top: 0;
@@ -691,9 +734,15 @@ h6 {
 
 #about h2 {
   font-size: 36px;
-  font-weight: bold;
+  /* font-weight: bold; */
   margin-bottom: 10px;
-  color: #000;
+  color: #fff;
+  max-width: 75%;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+#about h2 .highlight{
+  color: #7321f1;
 }
 
 #about h3 {
@@ -1193,7 +1242,7 @@ h6 {
 }
 
 #faq .faq-list .collapsed {
-  color: black;
+  color: #fff;
 }
 
 #faq .faq-list .collapsed:hover {
