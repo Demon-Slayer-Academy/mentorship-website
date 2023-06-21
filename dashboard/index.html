@@ -1,1 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Demon Slayer Academy | Dashboard</title>
 
+     <!-- Favicons -->
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+
+
+  
+   
+<div class="container">
+
+   <nav>
+      <div class="logo">
+          <h1 class="main-title">DEMON SLAYER ACADEMY</h1>DASHBOARD
+      </div>
+      <div class="user-profile">
+          <!-- <p class="username">Username</p> -->
+          <a href="../index.html"><button class="sign-out" id="logout">Logout</button></a>
+      </div>
+  </nav>
+
+   <div class="main-video-container">
+      <video src="images/vid-1.mp4" loop controls class="main-video"></video>
+      <h3 class="main-vid-title">1. house flood animation</h3>
+   </div>
+
+   <div class="video-list-container">
+
+      <div class="list active">
+         <video src="images/vid-1.mp4" class="list-video"></video>
+         <h3 class="list-title">1. house flood animation</h3>
+      </div>
+
+      <div class="list">
+         <video src="images/vid-2.mp4" class="list-video"></video>
+         <h3 class="list-title">2. zoombie walking animation</h3>
+      </div>
+
+      <div class="list">
+         <video src="images/vid-3.mp4" class="list-video"></video>
+         <h3 class="list-title">3. emoji falling animation</h3>
+      </div>
+
+      <div class="list">
+         <video src="images/vid-4.mp4" class="list-video"></video>
+         <h3 class="list-title">4. 3D town animation</h3>
+      </div>
+
+      <div class="list">
+         <video src="images/vid-5.mp4" class="list-video"></video>
+         <h3 class="list-title">5. man chasing carrot animation</h3>
+      </div>
+
+      <div class="list">
+         <video src="images/vid-6.mp4" class="list-video"></video>
+         <h3 class="list-title">6. door hinge animation</h3>
+      </div>
+
+      <div class="list">
+         <video src="images/vid-7.mp4" class="list-video"></video>
+         <h3 class="list-title">7. poeple walking in town animation</h3>
+      </div>
+
+      <div class="list">
+         <video src="images/vid-8.mp4" class="list-video"></video>
+         <h3 class="list-title">8. knight chasing virus animation</h3>
+      </div>
+
+      <div class="list">
+         <video src="images/vid-9.mp4" class="list-video"></video>
+         <h3 class="list-title">9. 3D helicopter animation</h3>
+      </div>
+
+   </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+
+<script type="module">
+  
+   // Import the functions you need from the SDKs you need
+   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+   import { getAuth, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
+   // TODO: Add SDKs for Firebase products that you want to use
+   // https://firebase.google.com/docs/web/setup#available-libraries
+ 
+   // Your web app's Firebase configuration
+   const firebaseConfig = {
+     apiKey: "AIzaSyAdZwMh5eA9nTqu1HFdmafDu4zsStusXZU",
+     authDomain: "file:///D:/HDD-Downloads/TheEvent/TheEvent/dashboard/index.html",
+     projectId: "dsacademy-web",
+     storageBucket: "dsacademy-web.appspot.com",
+     messagingSenderId: "401977677370",
+     appId: "1:401977677370:web:fce49f7d5ec0eac4df0703"
+   };
+ 
+   // Initialize Firebase
+   const app = initializeApp(firebaseConfig);
+   const analytics = getAnalytics(app)
+   const auth = getAuth()
+ 
+ 
+ //----- Login code start	  
+ document.getElementById("login").addEventListener("click", function() {
+   var email =  document.getElementById("email").value;
+   var password = document.getElementById("password").value;
+ 
+   signInWithEmailAndPassword(auth, email, password)
+   .then((userCredential) => {
+     // Signed in 
+     const user = userCredential.user;
+     console.log(user);
+   //   window.location.replace("dashboard/index.html");
+     alert(user.email+" Login Successful!");
+     // document.getElementById('logout').style.display = 'block';
+     // ...
+   })
+   .catch((error) => {
+     const errorCode = error.code;
+     const errorMessage = error.message;
+     console.log(errorMessage);
+     alert(errorMessage);
+   });		  		  
+ });
+ //----- Logout code start	  
+ document.getElementById("logout").addEventListener("click", function() {
+         signOut(auth).then(() => {
+            // Sign-out successful.
+            console.log('Sign-out successful.');
+            alert('Sign-out successful.');
+            document.getElementById('logout').style.display = 'none';
+          }).catch((error) => {
+            // An error happened.
+            console.log('An error happened.');
+          });		  		  
+      });
+      //----- End
+ //----- End
+
+ firebase.auth().onAuthStateChanged(function(user) {
+
+if(user) {
+   window.location.href = "dashboard/index.html";
+} else {
+   window.location.href = "login.html";
+}
+
+});
+ </script>
+
+</body>
+</html>
