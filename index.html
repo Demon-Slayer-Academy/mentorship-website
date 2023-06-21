@@ -23,6 +23,8 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
@@ -40,6 +42,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+
+
+  <script src="app.js" type="module"></script>
 
 
 </head>
@@ -91,10 +96,42 @@
       -->
         <!-- <i class="bi bi-list mobile-nav-toggle"></i> -->
       </nav><!-- .navbar -->
-      <a class="buy-tickets scrollto" href="#buy-tickets">Members Login</a>
+      <button class="buy-tickets" id="form-open">Members Login</button>
 
     </div>
   </header><!-- End Header -->
+
+
+  <section class="home">
+    <div class="form_container">
+      <i class="uil uil-times form_close"></i>
+      <!-- Login From -->
+      <div class="form login_form">
+        <form action="#" method="post">
+          <h2>LOGIN</h2>
+          <div class="input_box">
+            <input type="email" placeholder="Enter your email" required id="email"/>
+            <i class="uil uil-user-circle email"></i>
+          </div>
+          <div class="input_box">
+            <input type="password" placeholder="Enter your password" required id="password"/>
+            <i class="uil uil-lock password"></i>
+            <i class="uil uil-eye-slash pw_hide"></i>
+          </div>
+          <div class="option_field">
+            <span class="checkbox">
+              <!-- <input type="checkbox" id="check" />
+              <label for="check">Remember me</label> -->
+            </span>
+            <a href="mailto:pipsandriches@gmail.com" class="forgot_pw" id="form-open2">Any issues? Send us email</a>
+          </div>
+          <button id="login" name="login" class="button">Login</button>
+          <!-- <input type="submit" value="Login" class="button" onclick="validate()"> -->
+          <div class="login_signup">Not a member yet? <a href="#" id="signup">Apply now</a></div>
+        </form>
+      </div>
+      </div>
+      </section>
 
   <!-- ======= Hero Section ======= -->
   <section id="hero">
@@ -363,7 +400,85 @@
         }
     }
 })
+
+
   </script>
+
+
+<script type="module">
+  
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAdZwMh5eA9nTqu1HFdmafDu4zsStusXZU",
+    authDomain: "https://demon-slayer-academy.github.io/mentorship-website/",
+    projectId: "dsacademy-web",
+    storageBucket: "dsacademy-web.appspot.com",
+    messagingSenderId: "401977677370",
+    appId: "1:401977677370:web:fce49f7d5ec0eac4df0703"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app)
+  const auth = getAuth()
+
+
+//----- Login code start	  
+document.getElementById("login").addEventListener("click", function() {
+  var email =  document.getElementById("email").value;
+  var password = document.getElementById("password").value;
+
+  signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    console.log(user);
+    window.location.replace("dashboard/index.html");
+    alert(user.email+" logged in successfully!");
+    // document.getElementById('logout').style.display = 'block';
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorMessage);
+    alert("Email not found. Please try again!");
+  });		  		  
+});
+//----- Logout code start	  
+document.getElementById("logout").addEventListener("click", function() {
+		  signOut(auth).then(() => {
+			  // Sign-out successful.
+			  console.log('Sign-out successful.');
+			  alert('Sign-out successful.');
+			  document.getElementById('logout').style.display = 'none';
+			}).catch((error) => {
+			  // An error happened.
+			  console.log('An error happened.');
+			});		  		  
+	  });
+	  //----- End
+//----- End
+firebase.auth().onAuthStateChanged(function(user) {
+
+if(user) {
+   window.location.href = "dashboard/index.html";
+} else {
+   window.location.href = "login.html";
+}
+
+});
+</script>
+
+
+
 
 </body>
 
