@@ -1,3 +1,12 @@
+<?php
+session_start();
+if(isset($_SESSION['logged_in'])){
+if($_SESSION['logged_in'] == 1){
+header('Location: ./dashboard');
+die();
+}}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,7 +56,254 @@
   <script src="app.js" type="module"></script>
 
 
+
 </head>
+
+<style>
+ 
+ .wrapper{
+  max-width: 1090px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 50px
+}
+.wrapper .table{
+  background: rgba(255,255,255,0.08);
+  width: calc(48% - 120px);
+  padding: 30px 30px;
+  position: relative;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  border-radius: 15px;
+}
+.table .price-section{
+  display: flex;
+  justify-content: center;
+}
+.table .price-area{
+  height: 90px;
+  width: 200px;
+  border-radius: 2%;
+  padding: 2px;
+}
+.price-area .inner-area{
+  /* height: 100%;
+  width: 100%;
+  border-radius: 50%; */
+  /* border: 3px solid #fff; */
+  /* line-height: 117px; */
+  background: none;
+  
+  text-align: center;
+  color: #fff;
+  position: relative;
+}
+.price-area .inner-area .text{
+  /* font-size: 25px;
+  font-weight: 400;
+  position: absolute;
+  top: -10px;
+  left: 17px; */
+}
+.price-area .inner-area .price{
+  font-size: 45px;
+  font-weight: 500;
+  margin-left: 16px;
+  color: #fff;
+}
+.table .package-name{
+  width: 100%;
+  height: 2px;
+  margin: 35px 0;
+  position: relative;
+}
+.table .package-name::before{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 25px;
+  font-weight: 500;
+  background: #7321f1;
+  color: #fff;
+  border-radius: 10px;
+  padding: 0 15px;
+  transform: translate(-50%, -50%);
+}
+.table .features li{
+  margin-bottom: 15px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+.features li .list-name{
+  font-size: 17px;
+  font-weight: 400;
+  color: #fff;
+  background: none;
+}
+.features li .icon{
+  font-size: 15px;
+}
+.features li .icon.check{
+  color: #2db94d;
+  background: none;
+}
+.features li .icon.cross{
+  color: #cd3241;
+  background: none;
+}
+.table .btn{
+  width: 100%;
+  display: flex;
+  margin-top: 35px;
+  justify-content: center;
+}
+.table .btn button{
+  width: 80%;
+  height: 50px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.table .btn button:hover{
+  border-radius: 5px;
+}
+.basic .features li::selection{
+  background: #7321f1;
+}
+.basic ::selection,
+.basic .price-area,
+.basic .inner-area{
+  /* background: #fff; */
+  color: #fff;
+}
+.basic .btn button{
+  width: 100%;
+  border: 2px solid #7321f1;
+  border-radius: 8px;
+  background: #7321f1;
+  color: #fff;
+}
+.basic .btn button:hover{
+  
+  cursor: url('cursor/cursor.png'), auto;
+  border: 2px solid #7321f1;
+  border-radius: 8px;
+  background: none;
+  color: #fff;
+}
+.premium ::selection,
+.premium .price-area,
+.premium .inner-area,
+.premium .btn button{
+  background: #7321f1;
+}
+.premium .btn button:hover{
+  background: #7321f1;
+}
+.ultimate ::selection,
+.ultimate .price-area,
+.ultimate .inner-area{
+  background: none;
+}
+.ultimate .btn button{
+  width: 100%;
+  border: 2px solid #7321f1;
+  border-radius: 8px;
+  background: #7321f1;
+  color: #fff;
+}
+.ultimate .btn button:hover{
+  cursor: url('cursor/cursor.png'), auto;
+  border: 2px solid #7321f1;
+  border-radius: 8px;
+  background: none;
+  color: #fff;
+}
+.basic .package-name{
+  background: #7321f1;
+  
+}
+.premium .package-name{
+  background: #7321f1;
+}
+.ultimate .package-name{
+  background: #7321f1;
+}
+.basic .package-name::before{
+  content: "Tier 1";
+}
+.premium .package-name::before{
+  content: "Premium";
+  font-size: 24px;
+}
+.ultimate .package-name::before{
+  content: "Tier 2";
+  font-size: 24px;
+}
+@media (max-width: 1020px) {
+  .wrapper .table{
+    width: calc(50% - 20px);
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 698px) {
+  .wrapper .table{
+    width: 90%;
+  }
+}
+::selection{
+  color: #fff;
+}
+.table .ribbon{
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  overflow: hidden;
+}
+.table .ribbon::before,
+.table .ribbon::after{
+  position: absolute;
+  content: "";
+  z-index: -1;
+  display: block;
+  border: 7px solid #4606ac;
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+.table .ribbon::before{
+  top: 0px;
+  right: 15px;
+}
+.table .ribbon::after{
+  bottom: 15px;
+  left: 0px;
+}
+.table .ribbon span{
+  position: absolute;
+  top: 30px;
+  right: 0;
+  transform: rotate(-45deg);
+  width: 200px;
+  background: #a26bfa;
+  padding: 10px 0;
+  color: #fff;
+  text-align: center;
+  font-size: 17px;
+  text-transform: uppercase;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.12);
+}
+
+</style>
 
 <body>
 
@@ -107,14 +363,14 @@
       <i class="uil uil-times form_close"></i>
       <!-- Login From -->
       <div class="form login_form">
-<!--         <form action="/dashboard/index.html"> -->
+        <form method="post" action="check.php">
           <h2>LOGIN</h2>
           <div class="input_box">
-            <input type="email" placeholder="Enter your email" required id="email"/>
+            <input type="text" placeholder="Enter your email" required id="email" name="email"/>
             <i class="uil uil-user-circle email"></i>
           </div>
           <div class="input_box">
-            <input type="password" placeholder="Enter your password" required id="password"/>
+            <input type="password" placeholder="Enter your password" required id="password" name="password"/>
             <i class="uil uil-lock password"></i>
             <i class="uil uil-eye-slash pw_hide"></i>
           </div>
@@ -125,10 +381,10 @@
             </span>
             <a href="mailto:pipsandriches@gmail.com" class="forgot_pw" id="form-open2">Any issues? Send us email</a>
           </div>
-          <button id="login" name="login" class="button" onclick="location.href = 'https://demon-slayer-academy.github.io/mentorship-website/dashboard/index.html';">Login</button>
+          <input type="submit" value="Login" id="login" name="login" class="button"></button>
           <!-- <input type="submit" value="Login" class="button" onclick="validate()"> -->
           <div class="login_signup">Not a member yet? <a href="#" id="signup">Apply now</a></div>
-<!--         </form> -->
+        </form>
       </div>
       </div>
       </section>
@@ -139,7 +395,7 @@
       <h1 class="mb-4 pb-0"><b>DEMON SLAYER ACADEMY</b></h1>
       <p class="mb-4 pb-0">R E D E F I N E &nbsp H U M A N &nbsp N A T U R E</p>
       <!-- <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a> -->
-      <a href="#about" class="about-btn scrollto glow">
+      <a href="" class="about-btn glow">
         <span></span>
         <span></span>
         <span></span>
@@ -149,9 +405,9 @@
     </div>
   </section><!-- End Hero Section -->
 
-  <main id="main">
+  
 
-    
+  <main id="main">
     <section id="about">
       <center>
       <div class="container" data-aos="fade-up">
@@ -261,6 +517,97 @@
     </section><!-- End Subscribe Section -->
 
 
+    <div class="wrapper">
+    <div class="table basic">
+      <div class="price-section">
+        <div class="price-area">
+          <div class="inner-area">
+            <!-- <span class="text">$</span> -->
+            <span class="price">$199.99</span>
+          </div>
+        </div>
+      </div>
+      <div class="package-name"></div>
+      <ul class="features">
+        <li>
+          <span class="list-name">Demon Slayer Core Content</span>
+          <span class="icon check"><i class="fas fa-check"></i></span>
+        </li>
+        <li>
+          <span class="list-name">Demon Slayer Discord Community</span>
+          <span class="icon check"><i class="fas fa-check"></i></span>
+        </li>
+        <li>
+          <span class="list-name">Community Webinars Access</span>
+          <span class="icon check"><i class="fas fa-check"></i></span>
+        </li>
+        <li>
+          <span class="list-name">Pre-Market & Post Market Analysis</span>
+          <span class="icon check"><i class="fas fa-check"></i></span>
+        </li>
+        <li>
+          <span class="list-name">Demon Slayer Lectures & Webinars</span>
+          <span class="icon cross"><i class="fas fa-times"></i></span>
+        </li>
+        <li>
+          <span class="list-name">Purple Advanced Content & Lectures Demon Content</span>
+          <span class="icon cross"><i class="fas fa-times"></i></span>
+        </li>
+        <li>
+          <span class="list-name">Weekly 1-on-1 (30 min)</span>
+          <span class="icon cross"><i class="fas fa-times"></i></span>
+        </li>
+        
+      </ul>
+      <div class="btn"><button>Enroll Now</button></div>
+    </div>
+
+    <div class="table ultimate">
+      <div class="price-section">
+        <div class="price-area">
+          <div class="inner-area">
+            <!-- <span class="text">$</span> -->
+            <span class="price">$333.33</span>
+          </div>
+        </div>
+      </div>
+      <div class="package-name"></div>
+      <ul class="features">
+      <li>
+          <span class="list-name">Demon Slayer Core Content</span>
+          <span class="icon check"><i class="fas fa-check"></i></span>
+        </li>
+        <li>
+          <span class="list-name">Demon Slayer Discord Community</span>
+          <span class="icon check"><i class="fas fa-check"></i></span>
+        </li>
+        <li>
+          <span class="list-name">Community Webinars Access</span>
+          <span class="icon check"><i class="fas fa-check"></i></span>
+        </li>
+        <li>
+          <span class="list-name">Pre-Market & Post Market Analysis</span>
+          <span class="icon check"><i class="fas fa-check"></i></span>
+        </li>
+        <li>
+          <span class="list-name">Demon Slayer Lectures & Webinars</span>
+          <span class="icon check"><i class="fas fa-check"></i></span>
+        </li>
+        <li>
+          <span class="list-name">Purple Advanced Content & Lectures Demon Content</span>
+          <span class="icon check"><i class="fas fa-check"></i></span>
+        </li>
+        <li>
+          <span class="list-name">Weekly 1-on-1 (30 min)</span>
+          <span class="icon check"><i class="fas fa-check"></i></span>
+        </li>
+      </ul>
+      <div class="btn"><button>Enroll Now</button></div>
+    </div>
+  </div>
+
+
+
     <!-- =======  F.A.Q Section ======= -->
     <section id="faq">
 
@@ -275,7 +622,7 @@
 
             <ul class="faq-list">
 
-              <li>
+            <li>
                 <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">Who are the Demon Slayers? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
                 <div id="faq1" class="collapse" data-bs-parent=".faq-list">
                   <p>
@@ -312,10 +659,6 @@ Michael J. Huddleston, is the mentor of @SabaFlav and all credits goes to the ma
                 </div>
               </li>
 
-              
-
-             
-
             </ul>
 
           </div>
@@ -351,6 +694,10 @@ Michael J. Huddleston, is the mentor of @SabaFlav and all credits goes to the ma
     </div>
   </footer><!-- End  Footer -->
 
+
+
+  
+
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
@@ -370,6 +717,9 @@ Michael J. Huddleston, is the mentor of @SabaFlav and all credits goes to the ma
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
   <script>
+
+
+    
     $('#slider').owlCarousel({
     loop:true,
     margin:15,
@@ -389,6 +739,7 @@ Michael J. Huddleston, is the mentor of @SabaFlav and all credits goes to the ma
 })
 
 
+
   </script>
 
 
@@ -400,3 +751,34 @@ Michael J. Huddleston, is the mentor of @SabaFlav and all credits goes to the ma
 </body>
 
 </html>
+
+
+
+<?php
+$conn = mysqli_connect("localhost", "root", "");
+if(isset($_POST['login'])){
+  $email=$_POST['email'];
+  $password=$_POST['password'];
+  $sql = "SELECT * FROM websitelogin.logindetails WHERE email='$email'";
+  $result = mysqli_query($conn, $sql);
+  while($row = mysqli_fetch_assoc($result)){
+    $resultPassword = $row['password'];
+    if($password == $resultPassword){
+      header('dashboard/index.php');
+    }
+    else{
+      echo "<script>alert('Login unsuccessful');</script>";
+    }
+  }
+
+}
+
+if(isset($_SESSION['error'])){
+  if($_SESSION['error'] == 'login'){ ?>
+  <script>alert('Wrong credentials, please try again!');</script>
+  <?php
+  $_SESSION['error'] = 0;
+  session_destroy();
+}
+}
+?>
